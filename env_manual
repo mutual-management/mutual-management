@@ -1,0 +1,141 @@
+# 環境構築
+## Ruby
+### rubyのバージョン確認
+```
+ruby -v
+```
+```
+iidayasuhito@iidayasitonoAir ~ % ruby -v
+ruby 2.7.1p83 (2020-03-31 revision a0c7c23c9c) [x86_64-darwin19]
+```
+### rubyの特定バージョンのインストール
+```
+rbenv install 2.7.2
+```
+この際、こんなの↓が出てインストールできなかったので、メッセージ通りにコマンドを打ってみた。
+```
+iidayasuhito@iidayasitonoAir workspace % rbenv install 2.7.2
+ruby-build: definition not found: 2.7.2
+
+See all available versions with `rbenv install --list'.
+
+If the version you need is missing, try upgrading ruby-build:
+
+  brew update && brew upgrade ruby-build
+```
+インストール可能なrubyのバージョンを確認
+```
+rbenv install --list
+```
+```
+iidayasuhito@iidayasitonoAir workspace % rbenv install --list
+2.5.8
+2.6.6
+2.7.1
+jruby-9.2.12.0
+maglev-1.0.0
+mruby-2.1.1
+rbx-5.0
+truffleruby-20.1.0
+truffleruby+graalvm-20.1.0
+
+Only latest stable releases for each Ruby implementation are shown.
+Use 'rbenv install --list-all' to show all local versions.
+```
+2.7系は2.7.1までしかインストールできないらしい。そこでruby-buildをアップグレード。
+```
+brew update && brew upgrade ruby-build
+```
+そうすると2.7.2がインストール可能に。
+```
+iidayasuhito@iidayasitonoAir workspace % rbenv install --list
+2.6.7
+2.7.3
+3.0.1
+jruby-9.2.18.0
+mruby-3.0.0
+rbx-5.0
+truffleruby-21.1.0
+truffleruby+graalvm-21.1.0
+
+Only latest stable releases for each Ruby implementation are shown.
+Use 'rbenv install --list-all / -L' to show all local versions.
+```
+これでインストール完了。
+```
+rbenv install 2.7.2
+```
+
+## Node.js
+### nodeのバージョン確認
+```
+node -v
+```
+```
+iidayasuhito@iidayasitonoAir workspace % node -v
+v14.16.0
+```
+### nodeのダウングレード
+指定のバージョンは14.4.0なのでダウングレードが必要。
+nを使ってダウングレードを行う。（https://zenn.dev/ymasaoka/articles/using-n-for-downgrade-nodejsを参照。）
+```
+sudo npm install -g n
+```
+```
+sudo n install 14.4.0
+```
+ダウングレード完了。
+```
+iidayasuhito@iidayasitonoAir workspace % node -v
+v14.4.0
+```
+## ローカルリポジトリのセットアップ
+ローカルでプロジェクトディレクトリを作成し移動。
+```
+mkdir mutual_management
+cd mutual_management
+```
+ローカルリポジトリの作成
+```
+git init
+```
+リモートリポジトリの追加
+```
+git remote add origin https://github.com/mutual-management/mutual-management.git
+```
+リモートリポジトリからローカルへコードをプルする
+```
+git pull origin main
+```
+## 開発環境
+Gemをインストール
+```
+bundle install
+```
+データベース設定のひな形（config/database.yml.default）から個人用設定ファイルを作成
+```
+cp config/database.yml.default config/database.yml
+```
+個人用設定ファイル（config/database.yml）の編集
+
+- default:usernameに個人のPostgreSQLのアカウント名を記入
+
+```
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username:  # ここにPostgreSQLのアカウント名を記入
+  host: localhost
+```
+
+データベースの作成
+```
+rails db:create
+```
+サーバーの起動
+```
+rails s
+```
