@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_10_22_070318) do
 
   create_table "topics", force: :cascade do |t|
     t.text "content", null: false
-    t.string "month"
+    t.date "month"
     t.bigint "users_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
