@@ -33,7 +33,10 @@ class ScheduleController < ApplicationController
     end
   end
 
-  def destroy; end
+  def destroy
+    @schedule.destroy!
+    # フラッシュメッセージとリダイレクト処理
+  end
 
   private
 
