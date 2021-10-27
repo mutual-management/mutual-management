@@ -10,10 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_144918) do
+ActiveRecord::Schema.define(version: 2021_10_27_150704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "daily_stacks", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "amount"
+    t.integer "status", default: 0, null: false
+    t.date "date", null: false
+    t.integer "unit", null: false
+    t.bigint "expense_category_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["expense_category_id"], name: "index_daily_stacks_on_expense_category_id"
+    t.index ["user_id"], name: "index_daily_stacks_on_user_id"
+  end
 
   create_table "expense_categories", force: :cascade do |t|
     t.string "title", null: false
@@ -43,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_10_27_144918) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "daily_stacks", "expense_categories"
+  add_foreign_key "daily_stacks", "users"
   add_foreign_key "expense_categories", "users"
   add_foreign_key "topics", "users", column: "users_id"
 end
