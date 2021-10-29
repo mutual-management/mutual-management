@@ -1,20 +1,10 @@
 <div class="container pt-3">
-  <div class="row">
-    <div class="col-lg-10 offset-lg-1">
-        <div class="input-group mb-3">
-          <div class="input-group-append">
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-  <%= render 'topics/form', topic: @topic %>
-  <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
-
-  <div class="row">
-    <div class="col-12">
-      <div class="row">
-      </div>
-    </div>
+  <div class="text-center">
+    <%= render 'topics/form', topic: @topic %>
+    <%= link_to "前の月のリンク", '#' %>
+    <h1><%= @month.mon %>月</h1>
+    <%= link_to "後の月のリンク", '#' %>
+    <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
+    <%= button_to 'カードを追加', '#', class: "card" %>
   </div>
 </div>

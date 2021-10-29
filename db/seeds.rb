@@ -10,7 +10,7 @@ end
 10.times do
   Topic.create(
       content: "test",
-      month: "2020-11-09",
+      month: "2021-10-29",
       user_id: 1
   )
 end

@@ -1,7 +1,8 @@
 class TopicsController < ApplicationController
+  def show; end
   def index
-    @topics = Topic.all
-    @topic = Topic.find(1)
+    @month = params[:month] || Date.current
+    @topics = Topic.where(month: @month)
   end
 
   def destroy

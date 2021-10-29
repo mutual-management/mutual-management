@@ -8,7 +8,7 @@
         <div class="card-content">
           <p><%= topic.content %></p>
         </div>
-        <%= link_to topic_path(topic.id), class: "js-delete-topic-button", method: :delete, remote: true do %>
+        <%= button_to topic_path(topic.id), class: "js-delete-topic-button", method: :delete, remote: true do %>
           <p class="fa fa-trash">ゴミ箱</p>
         <% end %>
       </div>
