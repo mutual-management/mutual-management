@@ -1,0 +1,16 @@
+current directory: /Users/ryuji/workspace/runteq/mutual-management/vendor/bundle/ruby/2.7.0/gems/debug-1.2.4/ext/debug
+/Users/ryuji/.rbenv/versions/2.7.2/bin/ruby -I /Users/ryuji/.rbenv/versions/2.7.2/lib/ruby/2.7.0 -r ./siteconf20211021-57554-cnt9do.rb extconf.rb
+creating Makefile
+
+current directory: /Users/ryuji/workspace/runteq/mutual-management/vendor/bundle/ruby/2.7.0/gems/debug-1.2.4/ext/debug
+make "DESTDIR=" clean
+
+current directory: /Users/ryuji/workspace/runteq/mutual-management/vendor/bundle/ruby/2.7.0/gems/debug-1.2.4/ext/debug
+make "DESTDIR="
+compiling debug.c
+compiling iseq_collector.c
+linking shared-object debug/debug.bundle
+
+current directory: /Users/ryuji/workspace/runteq/mutual-management/vendor/bundle/ruby/2.7.0/gems/debug-1.2.4/ext/debug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug.bundle ./.gem.20211021-57554-1anvrqo/debug

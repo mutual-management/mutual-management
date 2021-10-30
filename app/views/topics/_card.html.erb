@@ -1,0 +1,17 @@
+<div class="col-sm-12 col-lg-4 mb-3">
+  <div id="board-id-<%= topic.id %>">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-date">
+          <%= l topic.created_at, format: :short %>
+        </div>
+        <div class="card-content">
+          <p><%= topic.content %></p>
+        </div>
+        <%= button_to topic_path(topic.id), class: "js-delete-topic-button", method: :delete, remote: true do %>
+          <p class="fa fa-trash">ゴミ箱</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
