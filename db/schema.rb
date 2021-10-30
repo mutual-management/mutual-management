@@ -15,6 +15,14 @@ ActiveRecord::Schema.define(version: 2021_10_27_150704) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "schedules", force: :cascade do |t|
+    t.string "title"
+    t.datetime "date", precision: 6
+    t.time "time"
+    t.integer "label_olor"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+
   create_table "daily_stacks", force: :cascade do |t|
     t.string "title", null: false
     t.integer "amount"
