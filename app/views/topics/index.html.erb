@@ -1,0 +1,10 @@
+<div class="container pt-3">
+  <div class="text-center">
+    <%= render 'topics/form', topic: @topic %>
+    <%= link_to "前の月のリンク", '#' %>
+    <h1><%= @month.mon %>月</h1>
+    <%= link_to "後の月のリンク", '#' %>
+    <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
+    <%= button_to 'カードを追加', '#', class: "card" %>
+  </div>
+</div>
