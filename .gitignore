@@ -32,3 +32,10 @@
 .DS_Store
 # Ignore installed gem files.
 /vendor/bundle
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
