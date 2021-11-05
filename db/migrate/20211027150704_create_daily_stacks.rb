@@ -1,4 +1,4 @@
-class CreateDailyStacks < ActiveRecord::Migration[7.0]
+class CreateDailyStacks < ActiveRecord::Migration[6.0]
   def change
     create_table :daily_stacks do |t|
       t.string :title, null: false
