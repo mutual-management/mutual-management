@@ -5,6 +5,8 @@
     <h1 class="text-4xl text-green-700 text-center font-semibold"><%= @month.begin.mon %>月</h1>
     <%= link_to "後の月のリンク", '#' %>
     <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
-    <%= button_to 'カードを追加', '#', class: "card" %>
+    <div class="bg-green-500 text-white w-48 mx-auto mb-36 mt-10">
+      <%= link_to 'カードを追加', '#', class: "card" %>
+    </div>
   </div>
 </div>
