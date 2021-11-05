@@ -8,9 +8,11 @@
         <div class="card-content text-white">
           <p><%= topic.content %></p>
         </div>
-        <%= button_to topic_path(topic.id), class: "js-delete-topic-button", method: :delete, remote: true do %>
-          <p class="fa fa-trash text-white">ゴミ箱</p>
-        <% end %>
+        <div class="flex justify-end">
+          <%= link_to topic_path(topic.id), class: "js-delete-topic-button text-white mr-5 mt-20", method: :delete, remote: true do %>
+            <i class="fas fa-trash fa-lg"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
