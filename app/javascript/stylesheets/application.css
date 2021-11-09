@@ -2,6 +2,6 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import 'remodal.css';
-@import 'remodal-default-theme.css';
-@import 'remodal.min.js';
+@import 'remodal';
+@import 'remodal-default-theme';
+@import 'remodal.min';
