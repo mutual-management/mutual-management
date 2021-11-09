@@ -2,14 +2,14 @@
   <div id="board-id-<%= topic.id %>">
     <div class="card w-auto h-40 ring-green-600 ring-2">
       <div class="card-body">
-        <div class="card-date text-white">
+        <div class="card-date flex justify-first text-white text-3xl ml-5">
           <%= l topic.created_at, format: :short %>
         </div>
-        <div class="card-content text-white">
+        <div class="card-content text-white text-5xl">
           <p><%= topic.content %></p>
         </div>
         <div class="flex justify-end">
-          <%= link_to topic_path(topic.id), class: "js-delete-topic-button text-white mr-5 mt-20", method: :delete, remote: true do %>
+          <%= link_to topic_path(topic.id), class: "js-delete-topic-button text-white mr-5 mt-10", method: :delete, remote: true do %>
             <i class="fas fa-trash fa-lg"></i>
           <% end %>
         </div>

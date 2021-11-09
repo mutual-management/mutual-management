@@ -1,9 +1,9 @@
 <div class="container mx-auto">
   <div class="text-center">
     <%= render 'topics/form', topic: @topic %>
-    <%= link_to "前の月のリンク", '#' %>
+    <%= link_to "前の月のリンク", '#', class: 'text-white' %>
     <h1 class="text-4xl text-green-700 text-center font-semibold"><%= @month.begin.mon %>月</h1>
-    <%= link_to "後の月のリンク", '#' %>
+    <%= link_to "後の月のリンク", '#', class: 'text-white' %>
     <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
     <div class="bg-green-500 text-white w-48 mx-auto mb-36 mt-10">
       <%= link_to 'カードを追加', '#', class: "card" %>
