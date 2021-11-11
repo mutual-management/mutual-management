@@ -5,7 +5,10 @@ import "channels";
 import "../css/tailwindcss.css";
 import '@fortawesome/fontawesome-free/js/all';
 require("jquery");
-require("stylesheets/application");
+//require("../stylesheets/application");
+import "../stylesheets/remodal-default-theme.css"
+import "../stylesheets/remodal.css"
+import "../stylesheets/remodal.min.js"
 
 Rails.start();
 Turbolinks.start();
