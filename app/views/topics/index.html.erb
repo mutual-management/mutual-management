@@ -14,7 +14,7 @@
     <div class="bg-green-500 text-white w-48 mx-auto mb-36 mt-10">
       <%= link_to 'カードを追加', '#modal_a', class: "card" %>
     </div>
-    <div class="remodal" data-remodal-id="modal_a">
+    <div class="remodal w-72 h-96 text-white bg-black" data-remodal-id="modal_a">
       <button data-remodal-action="close" class="remodal-close"></button>
         <%= render 'topics/form', topic: @topic %>
     </div>
