@@ -1,6 +1,5 @@
 <div class="container mx-auto">
   <div class="text-center">
-    <%= render 'topics/form', topic: @topic %>
     <div class="flex justify-evenly">
       <%= link_to '#', class: 'text-green-700' do %>
         <i class="fas fa-chevron-left fa-lg mt-2"></i>
@@ -14,7 +13,7 @@
     <div class="bg-green-500 text-white w-48 mx-auto mb-36 mt-10">
       <%= link_to 'カードを追加', '#modal_a', class: "card" %>
     </div>
-    <div class="remodal w-72 h-96 text-white bg-black" data-remodal-id="modal_a">
+    <div class="remodal w-72 h-96 bg-gray-700" data-remodal-id="modal_a">
       <button data-remodal-action="close" class="remodal-close"></button>
         <%= render 'topics/form', topic: @topic %>
     </div>
