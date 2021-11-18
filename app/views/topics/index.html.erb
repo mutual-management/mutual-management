@@ -11,9 +11,9 @@
     </div>
     <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
     <div class="bg-green-500 text-white w-48 mx-auto mb-36 mt-10">
-      <%= link_to 'カードを追加', '#modal_a', class: "card" %>
+      <%= link_to 'カードを追加', '#modal_b', class: "card" %>
     </div>
-    <div class="remodal w-72 h-96 bg-gray-700" data-remodal-id="modal_a">
+    <div class="remodal w-72 h-96 bg-gray-700" data-remodal-id="modal_b">
       <button data-remodal-action="close" class="remodal-close"></button>
         <%= render 'topics/form', topic: @topic %>
     </div>

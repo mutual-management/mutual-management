@@ -6,7 +6,18 @@
           <%= l topic.created_at, format: :short %>
         </div>
         <div class="card-content text-white text-5xl">
-          <p><%= topic.content %></p>
+           <%= link_to '#modal_a', class: "card" do %>
+             <p><%= topic.content %></p>
+           <% end %>
+           <div class="remodal w-72 h-96 bg-gray-700 text-white" data-remodal-id="modal_a">
+              <button data-remodal-action="close" class="remodal-close"></button>
+             <div class="flex justify-start text-3xl">
+               <p><%= topic.month %></p>
+             </div>
+             <div class="flex justify-start ml-8 mt-5 text-5xl">
+               <p><%= topic.content %></p>
+             </div>
+           </div>
         </div>
         <div class="flex justify-end">
           <%= link_to topic_path(topic.id), class: "js-delete-topic-button text-white mr-5 mt-10", method: :delete, remote: true do %>
