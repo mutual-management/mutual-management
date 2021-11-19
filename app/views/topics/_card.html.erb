@@ -5,9 +5,9 @@
         <div class="card-date flex justify-first text-white text-3xl ml-5">
           <%= l topic.created_at, format: :short %>
         </div>
-        <div class="card-content text-white text-5xl">
+        <div class="card-content text-white text-3xl">
           <%= link_to "#modal_#{ topic.id }", class: "card" do %>
-             <p><%= topic.content %></p>
+             <p class="mt-5 ml-48 mr-48 truncate"><%= topic.content %></p>
            <% end %>
            <div class="remodal w-72 h-96 bg-gray-700 text-white" data-remodal-id="modal_<%= topic.id %>">
               <button data-remodal-action="close" class="remodal-close"></button>
