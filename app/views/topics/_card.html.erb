@@ -6,10 +6,10 @@
           <%= l topic.created_at, format: :short %>
         </div>
         <div class="card-content text-white text-5xl">
-           <%= link_to '#modal_a', class: "card" do %>
+          <%= link_to "#modal_#{ topic.id }", class: "card" do %>
              <p><%= topic.content %></p>
            <% end %>
-           <div class="remodal w-72 h-96 bg-gray-700 text-white" data-remodal-id="modal_a">
+           <div class="remodal w-72 h-96 bg-gray-700 text-white" data-remodal-id="modal_<%= topic.id %>">
               <button data-remodal-action="close" class="remodal-close"></button>
              <div class="flex justify-start text-3xl">
                <p><%= topic.month %></p>
