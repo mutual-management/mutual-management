@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.create(topic_params)
-    redirect_to topics_path
+    redirect_to topics_path, flash: { blue: 'Topic' }
   end
 
   def destroy
