@@ -1,3 +1,4 @@
+// TODO テストファイル(サンプル実装（後に削除対象）)
 import React from "react"
 
 type Props = {
@@ -7,8 +8,8 @@ type Props = {
 const HelloWorld: React.VFC<Props> = ({ greeting }) => {
   return <>
     Greetingts: {greeting}
-    <div>jeiwojfiewjfijewfiojieofjiowjiojwiefjiewo</div>
-    <h1>JJJJJJJJ</h1>
+    <div>Test</div>
+    <h1>Test</h1>
   </>
 }
 
