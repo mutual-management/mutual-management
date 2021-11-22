@@ -1,5 +1,7 @@
 <% flash.each do |message_type, message| %>
-  <div class="bg-<%= message_type %>-100 border border-<%= message_type %>-400 text-<%= message_type %>-700 px-4 py-3 rounded relative" role="alert">
-    <strong class="font-bold"><%= message %></strong>
+  <div class="flex justify-end mr-14">
+    <div class="bg-<%= message_type %>-300 border border-<%= message_type %>-400 text-<%= message_type %>-700 px-4 py-3 rounded relative" role="alert">
+      <strong class="font-bold"><%= message %></strong>
+    </div>
   </div>
 <% end %>
