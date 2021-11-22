@@ -10,3 +10,4 @@ ActiveStorage.start()
 
 require('jquery')
 require('modal.js')
+require('keypad.js')
