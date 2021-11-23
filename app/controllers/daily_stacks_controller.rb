@@ -8,8 +8,9 @@ class DailyStacksController < ApplicationController
 
   def new
     current_user = User.first # ログイン機能が実装されたら削除する行
-    @date = Date.new(2021,11,4)
+    @date = Date.new(2021,11,4) # 仮
     @daily_stack = current_user.daily_stacks.build
+    @expense_categories = current_user.expense_categories.all
   end
 
   def show

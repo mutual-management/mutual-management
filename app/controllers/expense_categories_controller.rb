@@ -1,5 +1,5 @@
 class ExpenseCategoriesController < ApplicationController
-  def index
+  def new
   end
 
   def create
