@@ -6,6 +6,7 @@ import "../css/tailwindcss.css";
 import '@fortawesome/fontawesome-free/js/all';
 //import '~@fortawesome/fontawesome-free/scss/fontawesome';
 require("jquery");
+require("../src/flash_messages")
 //require("../stylesheets/application");
 
 import "../stylesheets/remodal-default-theme.css"
