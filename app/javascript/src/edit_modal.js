@@ -8,8 +8,8 @@ jQuery(function($){
             //編集可能時はclassでonをつける
             $(`#edit_content${edit_id}`).addClass('on');
             let txt = $(`#edit_content${edit_id}`).text();
-            //テキストをinputのvalueに入れてで置き換え
-            $(`#edit_content${edit_id}`).html('<input class="bg-gray-700" type="text" value="'+txt+'" />');
+            //テキストをinputのvalueに入れてで置換え
+          $(`#edit_content${edit_id}`).html(`<textarea cols='40' rows='5' class="bg-gray-700" type="text">${txt}</textarea>`);
             //同時にinputにフォーカスをする
             $('dd > input').focus().blur(function(){
                 let inputVal = $(`#edit_content${edit_id}`).val();
