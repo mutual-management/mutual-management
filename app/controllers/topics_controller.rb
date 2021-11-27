@@ -33,6 +33,9 @@ class TopicsController < ApplicationController
     end
   end
 
+  def update
+  end
+
   def destroy
     @topic = Topic.find(params[:id])
     @topic.delete
