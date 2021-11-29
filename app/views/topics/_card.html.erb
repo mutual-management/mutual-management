@@ -21,7 +21,7 @@
                <p class="bg-gray-700" id="edit_content<%= topic.id %>"><%= topic.content %></p>
              </div>
              <div class="update-btn">
-               <%= button_to "更新", topic_path(topic), { params: { content: topic.content } } %>
+               <%= button_to "更新", topic_path(topic), { params: { content: topic.content }, method: :patch } %>
              </div>
            </div>
         </div>
