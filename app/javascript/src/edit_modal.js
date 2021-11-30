@@ -12,7 +12,7 @@ jQuery(function($){
           $(`#edit_content${edit_id}`).html(`<textarea cols='40' rows='5' class="bg-gray-700" type="text">${txt}</textarea>`);
             //同時にinputにフォーカスをする
             $('p > textarea').focus().blur(function(){
-              let inputVal = $(this).val();
+                let inputVal = $(this).val();
                 console.log(inputVal);
                 //もし空欄だったら空欄にする前の内容に戻す
                 if(inputVal===''){
@@ -20,6 +20,15 @@ jQuery(function($){
                 };
                 //編集が終わったらtextで置き換える
                 $(this).parent().removeClass('on').text(inputVal);
+                $.ajax({
+                  url: `/topics/${edit_id}`,  
+                  type: 'PATCH',
+                  dataType: 'html',
+                  async: true,
+                  data: {
+                    content: inputVal,
+                  },
+                });
             });
         };
     });

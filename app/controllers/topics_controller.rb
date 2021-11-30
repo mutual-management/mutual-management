@@ -11,7 +11,7 @@ class TopicsController < ApplicationController
     else
       Time.zone.today.all_month
     end
-    @topics = Topic.where(month: @month)
+    @topics = Topic.where(month: @month).order(:id)
   end
 
   def create
