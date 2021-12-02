@@ -5,6 +5,7 @@ jQuery(function($){
        let edit_id = $(this).attr('id');
         //classでonを持っているかチェック
         if(!$(`#edit_content${edit_id}`).hasClass('on')){
+            $('.update-btn').show();
             //編集可能時はclassでonをつける
             $(`#edit_content${edit_id}`).addClass('on');
             let txt = $(`#edit_content${edit_id}`).text();
@@ -20,6 +21,7 @@ jQuery(function($){
                 };
                 //編集が終わったらtextで置き換える
                 $(this).parent().removeClass('on').text(inputVal);
+                $('.update-btn').hide();
                 $.ajax({
                   url: `/topics/${edit_id}`,  
                   type: 'PATCH',
