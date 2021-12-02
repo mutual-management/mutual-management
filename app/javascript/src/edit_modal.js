@@ -12,15 +12,15 @@ jQuery(function($){
             //テキストをinputのvalueに入れてで置換え
           $(`#edit_content${edit_id}`).html(`<textarea cols='40' rows='5' class="bg-gray-700" type="text">${txt}</textarea>`);
             //同時にinputにフォーカスをする
-            $('p > textarea').focus().blur(function(){
-                let inputVal = $(this).val();
+            $('.update-btn').focus().click(function(){
+                let inputVal = $('p > textarea').val();
                 console.log(inputVal);
                 //もし空欄だったら空欄にする前の内容に戻す
                 if(inputVal===''){
-                    inputVal = $(this).defaultValue;
+                  inputVal = $('p > textarea').defaultValue;
                 };
                 //編集が終わったらtextで置き換える
-                $(this).parent().removeClass('on').text(inputVal);
+                $('p > textarea').parent().removeClass('on').text(inputVal);
                 $('.update-btn').hide();
                 $.ajax({
                   url: `/topics/${edit_id}`,  
@@ -31,6 +31,7 @@ jQuery(function($){
                     content: inputVal,
                   },
                 });
+                location.reload();
             });
         };
     });
