@@ -12,13 +12,14 @@ jQuery(function($){
             //テキストをinputのvalueに入れてで置換え
           $(`#edit_content${edit_id}`).html(`<textarea cols='40' rows='5' class="bg-gray-700" type="text">${txt}</textarea>`);
             //同時にinputにフォーカスをする
-            $('.update-btn').focus().click(function(){
-                let inputVal = $('p > textarea').val();
-                console.log(inputVal);
+            $('p > textarea').focus();
+            $('.update-btn').click(function(){
+               let inputVal = $('p > textarea').val();
+              console.log(inputVal);
                 //もし空欄だったら空欄にする前の内容に戻す
-                if(inputVal===''){
-                  inputVal = $('p > textarea').defaultValue;
-                };
+               if(inputVal===''){
+                 inputVal = $('p > textarea').defaultValue;
+               };
                 //編集が終わったらtextで置き換える
                 $('p > textarea').parent().removeClass('on').text(inputVal);
                 $('.update-btn').hide();
@@ -31,7 +32,7 @@ jQuery(function($){
                     content: inputVal,
                   },
                 });
-                location.reload();
+                window.location.href = '/topics';
             });
         };
     });
