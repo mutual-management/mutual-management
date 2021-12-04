@@ -13,7 +13,7 @@ jQuery(function($){
           $(`#edit_content${edit_id}`).html(`<textarea cols='40' rows='5' class="bg-gray-700" type="text">${txt}</textarea>`);
             //同時にinputにフォーカスをする
             $('p > textarea').focus();
-            $('.update-btn').click(function(){
+            $('.update-btn').mousedown(function(){
                let inputVal = $('p > textarea').val();
               console.log(inputVal);
                 //もし空欄だったら空欄にする前の内容に戻す
@@ -34,6 +34,15 @@ jQuery(function($){
                 });
                 window.location.href = '/topics';
             });
+              $('p > textarea').blur(function(){
+              let inputVal = $(this).val();
+              $('p > textarea').parent().removeClass('on').text(inputVal);
+              $('.update-btn').hide();
+              //もし空欄だったら空欄にする前の内容に戻す
+              if(inputVal===''){
+                inputVal = $(this).defaultValue;
+              };
+              });
         };
     });
 });
