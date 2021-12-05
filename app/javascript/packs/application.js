@@ -10,6 +10,7 @@ ActiveStorage.start()
 
 require('jquery')
 require('modal.js')
+require('schedule_modal.js')
 // Support component names relative to this directory:
 var componentRequireContext = require.context("components", true);
 var ReactRailsUJS = require("react_ujs");

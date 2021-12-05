@@ -2,12 +2,12 @@ class DailyStacksController < ApplicationController
   before_action :set_daily_stack, only: %i[show update destroy]
 
   def index
-    current_user = User.first # ログイン機能が実装されたら削除する行
+    current_user = User.first # TODO ログイン機能が実装されたら削除する行
     daily_stacks = current_user.daily_stacks.all
   end
 
   def new
-    current_user = User.first # ログイン機能が実装されたら削除する行
+    current_user = User.first # TODO ログイン機能が実装されたら削除する行
     @date = Date.new(2021,11,4)
     @daily_stack = current_user.daily_stacks.build
   end
@@ -17,9 +17,9 @@ class DailyStacksController < ApplicationController
   end
 
   def create
-    current_user = User.first # ログイン機能が実装されたら削除する行
+    current_user = User.first # TODO ログイン機能が実装されたら削除する行
     @daily_stack = current_user.daily_stacks.build(daily_stack_params)
-    @daily_stack.save! # エラーハンドリング未実装
+    @daily_stack.save! # TODO エラーハンドリング未実装
   end
 
   def update
