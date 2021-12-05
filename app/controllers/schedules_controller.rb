@@ -2,16 +2,18 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[edit, update, destroy]
 
   def new
-    byebug
     @schedule = Schedule.new
   end
 
   def create
-    @schedule = current_user.schedule.build(schedule_params)
+    current_user = User.first # TODO ログイン機能が実装されたら削除する行
+    @schedule = current_user.schedules.build(schedule_params)
     if @schedule.save
+      puts "schedule save 成功"
       # 登録成功時リダイレクト
       # フラッシュメッセージ
     else
+      puts "schedule save 失敗"
       # フラッシュメッセージ
       render :new
     end
@@ -43,7 +45,7 @@ class SchedulesController < ApplicationController
 
   # スケジュール情報取得
   def set_schedule
-    @schedule = current_user.schedule.find(params[:id])
+    @schedule = current_user.schedules.find(params[:id])
   end
 
   # ストロングパラメータ
