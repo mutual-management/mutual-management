@@ -69,10 +69,8 @@
     <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 content-center py-4">
       <div class="col-start-2 col-span-4 py-5">
         <p class="text-white text-3xl my-5">分類</p>
-        <!-- <div class="w-full"> -->
           <%= render @expense_categories %>
           <%= link_to "＋", new_expense_category_path, class: "text-white text-3xl px-3" %>
-        <!-- </div> -->
         <%= f.hidden_field :expense_category_id, value: nil, class: "category-id" %>
       </div>
       <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-5">

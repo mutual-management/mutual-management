@@ -10,7 +10,7 @@ class DailyStacksController < ApplicationController
     current_user = User.first # ログイン機能が実装されたら削除する行
     @date = Date.new(2021,11,4) # 仮
     @daily_stack = current_user.daily_stacks.build
-    @expense_categories = current_user.expense_categories.all
+    @expense_categories = current_user.expense_categories.is_expense.active
   end
 
   def show
@@ -21,6 +21,7 @@ class DailyStacksController < ApplicationController
     current_user = User.first # ログイン機能が実装されたら削除する行
     @daily_stack = current_user.daily_stacks.build(daily_stack_params)
     @daily_stack.save! # エラーハンドリング未実装
+    redirect_to :root
   end
 
   def update

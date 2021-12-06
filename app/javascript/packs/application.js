@@ -12,3 +12,8 @@ require('jquery')
 require('modal.js')
 require('keypad.js')
 require('expense_category_button.js')
+
+// Support component names relative to this directory:
+var componentRequireContext = require.context("components", true);
+var ReactRailsUJS = require("react_ujs");
+ReactRailsUJS.useContext(componentRequireContext);
