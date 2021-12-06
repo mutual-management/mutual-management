@@ -23,4 +23,17 @@ $(function(){
   }).on("mouseup mouseleave touchend",function(){
     clearTimeout(timerId);
   });
-});
+  $(".add-category").click(function(){                                             
+    $(this).hide();
+    $(".add-category-area").show();
+  });                                                                                   
+  $(".add-category-button").click(function(){                                             
+    let title = $('.add-category-form').val(); 
+    $.ajax({
+      type: 'POST',
+      url: '/expense_categories',
+      data: {expense_category: {title: title}},
+      async: true
+    });
+  });
+});                                                                                   
