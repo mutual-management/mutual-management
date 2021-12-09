@@ -1,11 +1,11 @@
 <div class="container mx-auto">
   <div class="text-center">
-    <div class="flex justify-evenly">
-      <%= link_to topics_path(month: @month.begin.prev_month), class: 'text-green-700' do %>
+    <div class="flex justify-evenly my-8">
+      <%= link_to topics_path(month: @month.begin.prev_month), class: 'text-3xl text-green-700' do %>
         <i class="fas fa-chevron-left fa-lg mt-2"></i>
       <% end %>
-      <h1 class="text-4xl text-green-700 text-center font-semibold"><%= @month.begin.mon %>月</h1>
-      <%= link_to topics_path(month: @month.begin.next_month), class: 'text-green-700' do %>
+      <h1 class="text-6xl text-green-700 text-center font-semibold"><%= @month.begin.mon %>月</h1>
+      <%= link_to topics_path(month: @month.begin.next_month), class: 'text-3xl text-green-700' do %>
         <i class="fas fa-chevron-right fa-lg mt-2"></i>
       <% end %>
     </div>
