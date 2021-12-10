@@ -6,7 +6,7 @@
           <%= l topic.created_at, format: :short %>
         </div>
         <div class="card-content text-white text-3xl">
-          <%= link_to "#modal_#{ topic.id }", class: "card" do %>
+          <%= link_to "#modal_#{ topic.id }", class: "card block" do %>
              <p class="mt-5 ml-48 mr-48 truncate"><%= topic.content %></p>
            <% end %>
            <div class="remodal w-72 h-96 bg-gray-700 text-white" data-remodal-id="modal_<%= topic.id %>">
@@ -21,7 +21,7 @@
                <p class="bg-gray-700" id="edit_content<%= topic.id %>"><%= topic.content %></p>
              </div>
              <div class="update-btn bg-green-500 text-white text-2xl w-48 mx-auto mb-36 mt-6 hidden">
-                <%= link_to '更新' %>
+                <%= link_to '更新', class: 'block' %>
              </div>
            </div>
         </div>

@@ -11,7 +11,7 @@
     </div>
     <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
     <div class="bg-green-500 text-white w-6/12 h-16 leading-loose mx-auto mb-36 mt-10 text-3xl">
-      <%= link_to 'カードを追加', '#modal_b', class: "card" %>
+      <%= link_to 'カードを追加', '#modal_b', class: "card block" %>
     </div>
     <div class="remodal w-72 h-96 bg-gray-700" data-remodal-id="modal_b">
       <button data-remodal-action="close" class="remodal-close"></button>
