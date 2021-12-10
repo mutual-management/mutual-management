@@ -3,14 +3,7 @@ class TopicsController < ApplicationController
 
   def index
     @topic = Topic.new
-    @month = if params[:month]
-      day = params[:month].to_date
-      month_firstday = day.beginning_of_month
-      month_lastday = day.to_date.end_of_month
-      Range.new(month_firstday, month_lastday)
-    else
-      Time.zone.today.all_month
-    end
+    @month = @topic.this_month(params[:month])
     @topics = Topic.where(month: @month).order(:id)
   end
 
@@ -19,14 +12,7 @@ class TopicsController < ApplicationController
     if @topic.save
       redirect_to topics_path, flash: { blue: 'Topicを作成しました' }
     else
-      @month = if params[:month]
-        day = params[:month].to_date
-        month_firstday = day.beginning_of_month
-        month_lastday = day.to_date.end_of_month
-        Range.new(month_firstday, month_lastday)
-      else
-        Time.zone.today.all_month
-      end
+      @month = @topic.this_month(params[:month])
       @topics = Topic.where(month: @month)
       flash.now[:red] = 'Topicの作成に失敗しました'
       render :index
