@@ -23,10 +23,17 @@ $(function(){
   }).on("mouseup mouseleave touchend",function(){
     clearTimeout(timerId);
   });
+
   $(".add-category").click(function(){                                             
     $(this).hide();
     $(".add-category-area").show();
   });                                                                                   
+
+  $(".add-category-cancel").click(function(){                                             
+    $(".add-category-area").hide();
+    $(".add-category").show();
+  });
+
   $(".add-category-button").click(function(){                                             
     let title = $('.add-category-form').val(); 
     $.ajax({

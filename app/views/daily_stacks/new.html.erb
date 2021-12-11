@@ -68,11 +68,11 @@
     <%= form_with model: @daily_stack, local: true do |f| %>
     <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 content-center py-4">
       <div class="col-start-2 col-span-4 py-5">
-        <p class="text-white text-3xl my-5">分類</p>
+        <p class="text-white text-3xl my-5">カテゴリ</p>
           <%= render @expense_categories %>
-          <button type="button" class="add-category text-white bg-black cursor-pointer text-xl font-medium">+</button> 
-	  <%= render 'expense_categories/form'%>
-        <%= f.hidden_field :expense_category_id, value: nil, class: "category-id" %>
+          <button type="button" class="add-category text-white bg-black cursor-pointer text-4xl font-medium">+</button> 
+      	  <%= render 'expense_categories/form'%>
+          <%= f.hidden_field :expense_category_id, value: nil, class: "category-id" %>
       </div>
       <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-5">
         <p class="text-white col-span-2 text-3xl">内容：</p>
