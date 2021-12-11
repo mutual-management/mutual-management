@@ -1,9 +1,7 @@
 <%# TODO テストファイル(サンプル実装（後に削除対象）)　%>
 <div class="container pt-3 bg-black">
   <div class="text-center">
-    <h1 class="text-4xl text-green-700 text-center font-semibold">12月</h1>
-    <h2>Calendar#index</h2>
-    <p>Find me in app/views/calendar/index.html.erb</p>
+    <%= link_to "logout", logout_path, method: :delete, class: "px-2 py-1 bg-red-400 text-lg text-white font-semibold rounded" %>
     <%= react_component("HelloWorld", { greeting: "jfeiwjfioejifjwo." }) %>
 
     <div class="px-10 py-5 bg-black">
