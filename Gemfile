@@ -41,11 +41,14 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "webpacker"
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
+  gem 'capybara'
   gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
   gem "factory_bot_rails"
+  gem 'webdrivers'
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-rails"
+  gem 'selenium-webdriver'
 end
 
 group :development do
