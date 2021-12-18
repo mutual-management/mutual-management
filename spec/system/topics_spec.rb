@@ -3,8 +3,13 @@ require 'rails_helper'
 RSpec.describe "Topics", type: :system do
   describe 'ページ遷移' do
     it '/topicsにアクセスすると現在の月のページが表示される' do
+      visit topics_path
+      expect(page).to have_content Time.zone.today.month
     end
     it '左矢印をクリックすると先月のページが表示される' do
+      visit topics_path
+      page.first(".begin-month").click
+      expect(page).to have_content Time.zone.today.last_month.month
     end
     it '右矢印をクリックすると来月のページが表示される' do
     end
