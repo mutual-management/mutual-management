@@ -1,32 +1,43 @@
-<%= form_with(model: user) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% user.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+<div class="text-center">
+  <%= form_with(model: user) do |form| %>
+    <% if user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+          <% user.errors.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="grid grid-cols-6 rounded-lg border border-green-400 content-center py-4">
+      <div class="field flex col-start-2 col-span-4 grid grid-cols-5 py-1 text-white">
+        <%= form.label :name %>
+        <%= form.text_field :name, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
+      </div>
+
+      <div class="field flex col-start-2 col-span-4 grid grid-cols-5 py-1 text-white">
+        <%= form.label :email %>
+        <%= form.text_field :email, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
+      </div>
+
+      <div class="field flex col-start-2 col-span-4 grid grid-cols-5 py-1 text-white">
+        <%= form.label :password %>
+        <%= form.text_field :password, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
+      </div>
+
+      <div class="field flex col-start-2 col-span-4 grid grid-cols-5 py-1 text-white">
+        <%= form.label :password_confirmation %>
+        <%= form.text_field :password_confirmation, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :crypted_password %>
-    <%= form.text_field :crypted_password %>
-  </div>
-
-  <div class="field">
-    <%= form.label :salt %>
-    <%= form.text_field :salt %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+</div>
