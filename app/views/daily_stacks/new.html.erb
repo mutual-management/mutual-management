@@ -70,8 +70,9 @@
       <div class="col-start-2 col-span-4 py-5">
         <p class="text-white text-3xl my-5">カテゴリ</p>
           <%= render @expense_categories %>
-          <button type="button" class="add-category text-white bg-black cursor-pointer text-4xl font-medium">+</button> 
-      	  <%= render 'expense_categories/form'%>
+          <%= render "expense_categories/added_expense_category" %>
+          <button type="button" class="plus-button text-white bg-black cursor-pointer text-4xl font-medium">+</button> 
+      	  <%= render 'expense_categories/category_addition_area'%>
           <%= f.hidden_field :expense_category_id, value: nil, class: "category-id" %>
       </div>
       <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-5">

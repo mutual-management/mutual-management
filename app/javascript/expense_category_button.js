@@ -1,10 +1,13 @@
 $(function(){
+  // カテゴリボタンを押すと支出カテゴリの隠しフォームに値が入る
+  // つまり支出と支出カテゴリの紐付け
   $(".category").click(function(){
     $(".category-id").val($(this).attr("id").replace("expense-category-",""));
     $(".category").removeClass("bg-green-400");
     $(this).addClass("bg-green-400");
   });
 
+  // カテゴリボタンを長押しすると論理削除　画面から消える
   $('.category').on("mousedown touchstart",function(){
     let id = $(this).attr('id').replace('expense-category-','');
     let value = $(this).attr('value');
@@ -24,23 +27,32 @@ $(function(){
     clearTimeout(timerId);
   });
 
-  $(".add-category").click(function(){                                             
+  // +ボタンでカテゴリ追加エリアを表示
+  $(".plus-button").click(function(){                                             
     $(this).hide();
-    $(".add-category-area").show();
+    $(".category-addition-area").show();
   });                                                                                   
 
+  // カテゴリ追加をキャンセル
   $(".add-category-cancel").click(function(){                                             
-    $(".add-category-area").hide();
-    $(".add-category").show();
+    $(".category-addition-area").hide();
+    $(".plus-button").show();
   });
 
+  // カテゴリ追加（リクエスト送信）
+  // 追加できたカテゴリをカテゴリボタンとして表示
   $(".add-category-button").click(function(){                                             
     let title = $('.add-category-form').val(); 
-    $.ajax({
-      type: 'POST',
+    $.post({
       url: '/expense_categories',
       data: {expense_category: {title: title}},
-      async: true
+    }).done(function(res){
+      $(".category-addition-area").hide();
+      $(".added-category")
+      .attr('id', `expense-category-${res.id}`)
+      .attr('value', res.title)
+      .text(res.title)
+      .show();
     });
   });
 });                                                                                   

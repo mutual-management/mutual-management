@@ -9,6 +9,7 @@ class ExpenseCategoriesController < ApplicationController
     current_user = User.first # ログイン機能が実装されたら削除する行
     @expense_category = current_user.expense_categories.create(expense_category_params)
     @expense_category.save! # エラーハンドリング未実装
+    render json: @expense_category
   end
 
   def update
