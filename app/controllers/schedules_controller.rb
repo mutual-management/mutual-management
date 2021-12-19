@@ -1,4 +1,5 @@
 class SchedulesController < ApplicationController
+  include Common
   before_action :set_schedule, only: %i[edit update destroy]
 
   def new
@@ -6,7 +7,7 @@ class SchedulesController < ApplicationController
   end
 
   def create
-    @schedule = current_user.schedules.build(schedule_params)
+    @schedule = current_user.schedules.build(check_params_int(schedule_params))
     if @schedule.save
       # 登録成功時リダイレクト
       # フラッシュメッセージ
@@ -48,5 +49,13 @@ class SchedulesController < ApplicationController
   # ストロングパラメータ
   def schedule_params
     params.require(:schedule).permit(:title, :time, :labelColor, :date)
+  end
+
+  def check_params_int(parameters)
+    parameters.each do |key, value|
+      if integer_string?(value)
+        parameters[key] = value.to_i
+      end
+    end
   end
 end
