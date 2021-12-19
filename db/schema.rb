@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_15_082711) do
+ActiveRecord::Schema.define(version: 2021_12_19_025734) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_082711) do
     t.string "title", null: false
     t.datetime "date", precision: 6, null: false
     t.time "time", null: false
-    t.integer "label_olor"
+    t.integer "label_color"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

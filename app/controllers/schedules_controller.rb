@@ -48,7 +48,7 @@ class SchedulesController < ApplicationController
 
   # ストロングパラメータ
   def schedule_params
-    params.require(:schedule).permit(:title, :time, :labelColor, :date)
+    params.require(:schedule).permit(:title, :time, :label_color, :date)
   end
 
   def check_params_int(parameters)
