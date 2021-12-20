@@ -4,5 +4,6 @@ FactoryBot.define do
    email    { "yano@gmail.com" }
    password   { "yanoyano" }
    password_confirmation  { "yanoyano" }
+   id     { 1 }
   end
 end

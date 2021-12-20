@@ -5,7 +5,7 @@
         <i class="fas fa-chevron-left fa-lg mt-2"></i>
       <% end %>
       <h1 class="text-6xl text-green-700 text-center font-semibold"><%= @month.begin.mon %>月</h1>
-      <%= link_to topics_path(month: @month.begin.next_month), class: 'text-3xl text-green-700' do %>
+      <%= link_to topics_path(month: @month.begin.next_month), class: 'next-month text-3xl text-green-700' do %>
         <i class="fas fa-chevron-right fa-lg mt-2"></i>
       <% end %>
     </div>
