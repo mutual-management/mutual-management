@@ -22,6 +22,7 @@ class TopicsController < ApplicationController
   def update
     @topic = Topic.find(params[:id])
     if @topic.update(content: params[:content])
+      sleep 1
       redirect_to topics_path, flash: { blue: 'Topicを更新しました' }
     else
       flash.now[:red] = 'Topicの更新に失敗しました'

@@ -30,8 +30,16 @@ RSpec.describe "Topics", type: :system do
       end
       context '異常系' do
         it 'topicを空で登録ボタンを押すとtopicが投稿できない' do
+          click_on 'カードを追加'
+          fill_in 'タップしてTopicを入力してください', with: ''
+          click_on '登録'
+          expect(page).to have_content 'Topicの作成に失敗しました'
         end
         it 'topicが164文字以上だとtopicが投稿できない' do
+          click_on 'カードを追加'
+          fill_in 'タップしてTopicを入力してください', with: 'あ' * 164
+          click_on '登録'
+          expect(page).to have_content 'Topicの作成に失敗しました'
         end
       end
     end
@@ -40,6 +48,11 @@ RSpec.describe "Topics", type: :system do
     context 'topicをクリックするとモーダルが表示されて鉛筆マークをクリックすると編集可能状態になる' do
       context '正常系' do
         it '更新ボタンをクリックするとtopicが更新される' do
+          page.first(".block").click
+          page.first(".fa-edit").click
+          find(".edit_topic").set("やの")
+          click_on '更新'
+          expect(page).to have_content 'やの'
         end
       end
       context '異常系' do

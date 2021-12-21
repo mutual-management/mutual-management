@@ -10,7 +10,7 @@ jQuery(function($){
             $(`#edit_content${edit_id}`).addClass('on');
             let txt = $(`#edit_content${edit_id}`).text();
             //テキストをinputのvalueに入れてで置換え
-          $(`#edit_content${edit_id}`).html(`<textarea class="bg-gray-700 w-96 h-48 resize-none" type="text">${txt}</textarea>`);
+          $(`#edit_content${edit_id}`).html(`<textarea class="edit_topic bg-gray-700 w-96 h-48 resize-none" type="text">${txt}</textarea>`);
             //同時にinputにフォーカスをする
             $('p > textarea').focus();
             $('.update-btn').mousedown(function(){
