@@ -12,7 +12,7 @@
         </div>
         <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-1 text-white">
           <%= f.label :labelColor, "ラベル" %>
-          <%= f.select "labelColor", Schedule.labelColors.values.to_a, {include_blank: true}, {class: 'col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2'} %>
+          <%= f.select "labelColor", Schedule.labelColors.keys.to_a, {include_blank: true}, {class: 'col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2'} %>
         </div>
         <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-1 text-white">
           <%= f.label :date, "予定日" %>

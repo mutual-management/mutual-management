@@ -53,6 +53,7 @@ class SchedulesController < ApplicationController
 
   def check_params_int(parameters)
     parameters.each do |key, value|
+      puts key + ":" + value
       if integer_string?(value)
         parameters[key] = value.to_i
       end
