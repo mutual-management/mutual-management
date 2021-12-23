@@ -52,11 +52,16 @@ RSpec.describe "Topics", type: :system do
           page.first(".fa-edit").click
           find(".edit_topic").set("やの")
           click_on '更新'
-          expect(page).to have_content 'やの'
+          expect(page).to have_content 'Topicを更新しました'
         end
       end
       context '異常系' do
         it 'topicが空で更新ボタンをクリックするとtopicが更新されない' do
+          page.first(".block").click
+          page.first(".fa-edit").click
+          find(".edit_topic").set(" ")
+          click_on '更新'
+          expect(page).to have_content 'Topicの更新に失敗しました'
         end
         it 'topicが164文字以上だとtopicが更新されない' do
         end

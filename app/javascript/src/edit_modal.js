@@ -31,8 +31,9 @@ jQuery(function($){
                   data: {
                     content: inputVal,
                   },
+                }).done(function () {
+                  window.location.href = '/topics';
                 });
-                window.location.href = '/topics';
             });
               $('p > textarea').blur(function(){
               let inputVal = $(this).val();
