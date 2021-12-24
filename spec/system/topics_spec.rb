@@ -64,12 +64,21 @@ RSpec.describe "Topics", type: :system do
           expect(page).to have_content 'Topicの更新に失敗しました'
         end
         it 'topicが164文字以上だとtopicが更新されない' do
+          page.first(".block").click
+          page.first(".fa-edit").click
+          find(".edit_topic").set("や" * 164)
+          click_on '更新'
+          expect(page).to have_content 'Topicの更新に失敗しました'
         end
       end
     end
   end
   describe 'topicの削除' do
     it 'ゴミ箱をクリックするとtopicが削除される' do
+      page.accept_confirm do
+        click_on 'delete-topic'
+      end
+      expect(page).to_not have_content 'yano'
     end
   end
 end
