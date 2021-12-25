@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_27_150704) do
+ActiveRecord::Schema.define(version: 2021_11_15_082711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,17 +31,28 @@ ActiveRecord::Schema.define(version: 2021_10_27_150704) do
 
   create_table "expense_categories", force: :cascade do |t|
     t.string "title", null: false
-    t.boolean "delete_flag", default: false, null: false
+    t.boolean "delete_flag", default: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_expense_categories_on_user_id"
   end
 
+  create_table "monthly_targets", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "amount", null: false
+    t.date "month", null: false
+    t.integer "unit", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_monthly_targets_on_user_id"
+  end
+
   create_table "schedules", force: :cascade do |t|
-    t.string "title"
-    t.datetime "date"
-    t.time "time"
+    t.string "title", null: false
+    t.datetime "date", precision: 6, null: false
+    t.time "time", null: false
     t.integer "label_olor"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -69,5 +80,6 @@ ActiveRecord::Schema.define(version: 2021_10_27_150704) do
   add_foreign_key "daily_stacks", "expense_categories"
   add_foreign_key "daily_stacks", "users"
   add_foreign_key "expense_categories", "users"
+  add_foreign_key "monthly_targets", "users"
   add_foreign_key "topics", "users"
 end
