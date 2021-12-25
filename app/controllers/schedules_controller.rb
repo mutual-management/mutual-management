@@ -1,12 +1,12 @@
-class ScheduleController < ApplicationController
-  before_action :set_schedule, only: %i[edit, update, destroy]
+class SchedulesController < ApplicationController
+  before_action :set_schedule, only: %i[edit update destroy]
 
   def new
     @schedule = Schedule.new
   end
 
   def create
-    @schedule = current_user.schedule.build(schedule_params)
+    @schedule = current_user.schedules.build(schedule_params)
     if @schedule.save
       # 登録成功時リダイレクト
       # フラッシュメッセージ
@@ -21,7 +21,7 @@ class ScheduleController < ApplicationController
   end
 
   # スケジュール情報編集ダイアログ表示
-  def edit;end
+  def edit; end
 
   def update
     if @schedule.update(schedule_params)
@@ -42,7 +42,7 @@ class ScheduleController < ApplicationController
 
   # スケジュール情報取得
   def set_schedule
-    @schedule = current_user.schedule.find(params[:id])
+    @schedule = current_user.schedules.find(params[:id])
   end
 
   # ストロングパラメータ

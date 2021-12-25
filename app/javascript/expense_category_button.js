@@ -8,11 +8,12 @@ $(function(){
   });
 
   // カテゴリボタンを長押しすると論理削除　画面から消える
-  $('.category').on("mousedown touchstart",function(){
+  var timerId;
+  $('.category').on("touchstart",function(){
     let id = $(this).attr('id').replace('expense-category-','');
     let value = $(this).attr('value');
-    let LONGPRESS = 1500;
-    let timerId = setTimeout(function(){
+    const LONGPRESS = 1500;
+    timerId = setTimeout(function(){
     	if (window.confirm(`カテゴリ「${value}」を削除しますか？`)){
         $.ajax({
           type: 'PATCH',
@@ -23,7 +24,7 @@ $(function(){
         $(`#expense-category-${id}`).remove();
       }
     }, LONGPRESS);
-  }).on("mouseup mouseleave touchend",function(){
+  }).on("touchend",function(){
     clearTimeout(timerId);
   });
 

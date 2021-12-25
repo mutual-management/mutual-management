@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  def hello
-    render html: "hello"
+  before_action :require_login
+
+  def not_authenticated
+    flash[:danger] = 'ログインしてください'
+    redirect_to login_path
   end
 end
