@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_11_15_082711) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "title", null: false
-    t.datetime "date", precision: 6, null: false
+    t.datetime "date", null: false
     t.time "time", null: false
     t.integer "label_olor"
     t.datetime "created_at", precision: 6, null: false
