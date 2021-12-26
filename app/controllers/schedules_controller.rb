@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[edit update destroy]
 
   def new
-    @schedule = Schedule.new
+    @schedule = current_user.schedules.build
   end
 
   def create
@@ -12,8 +12,8 @@ class SchedulesController < ApplicationController
       # 登録成功時リダイレクト
       # フラッシュメッセージ
     else
-      # フラッシュメッセージ
-      render :new
+      flash.now[:red] = 'スケージュールの作成に失敗しました'
+      render "calendar/index"
     end
   end
 
@@ -53,7 +53,6 @@ class SchedulesController < ApplicationController
 
   def check_params_int(parameters)
     parameters.each do |key, value|
-      puts key + ":" + value
       if integer_string?(value)
         parameters[key] = value.to_i
       end
