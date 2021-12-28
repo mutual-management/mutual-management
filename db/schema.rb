@@ -51,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_150237) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "title", null: false
-    t.datetime "date", precision: 6, null: false
+    t.datetime "date", null: false
     t.time "time", null: false
     t.integer "label_color"
     t.datetime "created_at", precision: 6, null: false
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2021_12_21_150237) do
 
   create_table "topics", force: :cascade do |t|
     t.text "content", null: false
-    t.date "month"
+    t.date "month", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

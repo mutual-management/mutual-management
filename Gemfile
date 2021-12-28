@@ -13,7 +13,7 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-gem "turbo-rails", ">= 0.7.11"
+# gem "turbo-rails", ">= 0.7.11"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails", ">= 0.4.0"
@@ -42,11 +42,14 @@ gem "react-rails"
 gem "webpacker"
 group :development, :test do
   # Start debugger with binding.b [https://github.com/ruby/debug]
+  gem 'capybara'
   gem "debug", ">= 1.0.0", platforms: %i[ mri mingw x64_mingw ]
   gem "factory_bot_rails"
+  gem 'webdrivers'
   gem "rspec-rails"
   gem "rubocop", require: false
   gem "rubocop-rails"
+  gem 'selenium-webdriver'
 end
 
 group :development do

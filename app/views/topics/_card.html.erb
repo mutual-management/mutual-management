@@ -1,16 +1,35 @@
-<div class="col-sm-12 col-lg-4 mb-3">
+<div class="js-delete-topic-button-<%= topic.id %> col-sm-12 col-lg-4 mb-3">
   <div id="board-id-<%= topic.id %>">
-    <div class="card">
+    <div class="card w-auto h-40 ring-green-600 ring-2">
       <div class="card-body">
-        <div class="card-date">
+        <div class="card-date flex justify-first text-white text-3xl ml-5">
           <%= l topic.created_at, format: :short %>
         </div>
-        <div class="card-content">
-          <p><%= topic.content %></p>
+        <div class="card-content text-white text-3xl">
+          <%= link_to "#modal_#{ topic.id }", class: "card block" do %>
+             <p class="mt-5 ml-48 mr-48 truncate"><%= topic.content %></p>
+           <% end %>
+           <div class="remodal w-72 h-96 bg-gray-700 text-white" data-remodal-id="modal_<%= topic.id %>">
+              <button data-remodal-action="close" class="remodal-close"></button>
+              <%= link_to "#modal_#{ topic.id }", class: 'remodal-edit flex justify-end text-3xl', id: topic.id do %>
+                <i class="far fa-edit"></i>
+              <% end %>
+             <div class="flex justify-start text-3xl">
+               <p><%= topic.month %></p>
+             </div>
+             <div class="mt-5 text-3xl">
+               <p class="bg-gray-700" id="edit_content<%= topic.id %>"><%= topic.content %></p>
+             </div>
+             <div class="update-btn bg-green-500 text-white text-2xl w-48 mx-auto mb-36 mt-6 hidden">
+                <%= link_to '更新', class: 'block' %>
+             </div>
+           </div>
         </div>
-        <%= button_to topic_path(topic.id), class: "js-delete-topic-button", method: :delete, remote: true do %>
-          <p class="fa fa-trash">ゴミ箱</p>
-        <% end %>
+        <div class="flex justify-end">
+          <%= link_to topic_path(topic.id), id: 'delete-topic', class: "js-delete-topic-button text-white mr-5 mt-10", method: :delete, data: { confirm: 'Topicを削除しますか？'}, remote: true do %>
+            <i class="fas fa-trash fa-lg"></i>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

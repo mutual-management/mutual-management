@@ -1,10 +1,21 @@
-<div class="container pt-3">
+<div class="container mx-auto">
   <div class="text-center">
-    <%= render 'topics/form', topic: @topic %>
-    <%= link_to "前の月のリンク", '#' %>
-    <h1 class="text-4xl text-green-700 text-center font-semibold"><%= @month.mon %>月</h1>
-    <%= link_to "後の月のリンク", '#' %>
+    <div class="flex justify-evenly my-8">
+      <%= link_to topics_path(month: @month.begin.prev_month), class: 'begin-month text-3xl text-green-700' do %>
+        <i class="fas fa-chevron-left fa-lg mt-2"></i>
+      <% end %>
+      <h1 class="text-6xl text-green-700 text-center font-semibold"><%= @month.begin.mon %>月</h1>
+      <%= link_to topics_path(month: @month.begin.next_month), class: 'next-month text-3xl text-green-700' do %>
+        <i class="fas fa-chevron-right fa-lg mt-2"></i>
+      <% end %>
+    </div>
     <%= render partial: 'topics/card', collection: @topics, as: 'topic' %>
-    <%= button_to 'カードを追加', '#', class: "card" %>
+    <div class="bg-green-500 text-white w-6/12 h-16 leading-loose mx-auto mb-36 mt-10 text-3xl">
+      <%= link_to 'カードを追加', '#modal_b', class: "card block" %>
+    </div>
+    <div class="remodal w-72 h-96 bg-gray-700" data-remodal-id="modal_b">
+      <button data-remodal-action="close" class="remodal-close"></button>
+        <%= render 'topics/form', topic: @topic %>
+    </div>
   </div>
 </div>
