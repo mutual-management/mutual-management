@@ -1,18 +1,19 @@
 class SchedulesController < ApplicationController
-  include Common
   before_action :set_schedule, only: %i[edit update destroy]
 
   def new
+    now = Time.now
     @schedule = current_user.schedules.build
   end
 
   def create
-    @schedule = current_user.schedules.build(check_params_int(schedule_params))
+    check_label_color_int(schedule_params)
+    @schedule = current_user.schedules.build(schedule_params)
+
     if @schedule.save
-      # 登録成功時リダイレクト
-      # フラッシュメッセージ
+      redirect_to calendar_index_path, flash: { blue: '予定を作成しました' }
     else
-      flash.now[:red] = 'スケージュールの作成に失敗しました'
+      flash.now[:red] = '予定の作成に失敗しました'
       render "calendar/index"
     end
   end
@@ -51,11 +52,8 @@ class SchedulesController < ApplicationController
     params.require(:schedule).permit(:title, :time, :label_color, :date)
   end
 
-  def check_params_int(parameters)
-    parameters.each do |key, value|
-      if integer_string?(value)
-        parameters[key] = value.to_i
-      end
-    end
+  # ラベルカラーの値を数値へ変換
+  def check_label_color_int(parameters)
+    parameters[:label_color] = parameters[:label_color].to_i
   end
 end
