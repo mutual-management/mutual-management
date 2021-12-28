@@ -2,7 +2,6 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[edit update destroy]
 
   def new
-    now = Time.now
     @schedule = current_user.schedules.build
   end
 
