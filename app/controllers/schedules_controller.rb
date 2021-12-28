@@ -2,17 +2,19 @@ class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[edit update destroy]
 
   def new
-    @schedule = Schedule.new
+    now = Time.now
+    @schedule = current_user.schedules.build
   end
 
   def create
+    check_label_color_int(schedule_params)
     @schedule = current_user.schedules.build(schedule_params)
+
     if @schedule.save
-      # 登録成功時リダイレクト
-      # フラッシュメッセージ
+      redirect_to calendar_index_path, flash: { blue: '予定を作成しました' }
     else
-      # フラッシュメッセージ
-      render :new
+      flash.now[:red] = '予定の作成に失敗しました'
+      render "calendar/index"
     end
   end
 
@@ -47,6 +49,11 @@ class SchedulesController < ApplicationController
 
   # ストロングパラメータ
   def schedule_params
-    params.require(:schedule).permit(:title, :time, :labelColor, :date)
+    params.require(:schedule).permit(:title, :time, :label_color, :date)
+  end
+
+  # ラベルカラーの値を数値へ変換
+  def check_label_color_int(parameters)
+    parameters[:label_color] = parameters[:label_color].to_i
   end
 end
