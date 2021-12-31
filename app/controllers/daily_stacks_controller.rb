@@ -8,7 +8,7 @@ class DailyStacksController < ApplicationController
   def new
     @date = Date.new(2021,11,4)
     @daily_stack = current_user.daily_stacks.build
-    @expense_categories = current_user.expense_categories.is_expense.active
+    @expense_categories = current_user.expense_categories.active
   end
 
   def show
