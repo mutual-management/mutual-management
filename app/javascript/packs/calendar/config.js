@@ -6,12 +6,16 @@ const calendarEl = document.getElementById("calendar");
 
 const calendar = new Calendar(calendarEl, {
   plugins: [dayGridPlugin, interactionPlugin],
-  locale: "ja",
   timeZone: "Asia/Tokyo",
   firstDay: 1,
   headerToolbar: {
-    start: '',
+    start: 'prev',
     center: 'title',
-    end: 'today prev,next'
+    end: 'today next'
   },
+  dateClick: function() {
+    console.log("日付クリック");
+  }
 });
+
+calendar.render();
