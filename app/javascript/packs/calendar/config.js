@@ -13,9 +13,15 @@ const calendar = new Calendar(calendarEl, {
     center: 'title',
     end: 'today next'
   },
-  dateClick: function() {
-    console.log("日付クリック");
+  dateClick: function(targetDate) {
+    focusOnDate(targetDate);
   }
 });
 
 calendar.render();
+
+function focusOnDate(date) {
+  $(".target-date").removeClass(".target-date");
+  date.dayEl.classList.add("target-date");
+  console.log("日付クリック");
+};
