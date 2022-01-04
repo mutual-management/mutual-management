@@ -6,6 +6,7 @@ class CalendarController < ApplicationController
   end
 
   def show
+    # TODO 選択した日付の日々の入力情報を取得なければ空白表示
     puts params[:targetDate]
   end
 end
