@@ -1,8 +1,14 @@
 $(function(){
-  $(".modal-open").click( function(){
-    $( ".modal-content" ).fadeIn( "slow" );
+  $(".stack-modal-open").click( function(){
+    $( ".stack-modal-content" ).fadeIn( "slow" );
   });
-  $( ".modal-close" ).unbind().click( function(){
-    $( ".modal-content" ).fadeOut( "slow");
+  $(".expense-modal-open").click( function(){
+    $( ".expense-modal-content" ).fadeIn( "slow" );
+  });
+  $( ".stack-modal-close" ).unbind().click( function(){
+    $( ".stack-modal-content" ).fadeOut( "slow");
+  });
+  $( ".expense-modal-close" ).unbind().click( function(){
+    $( ".expense-modal-content" ).fadeOut( "slow");
   });
 });
