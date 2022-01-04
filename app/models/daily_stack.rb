@@ -1,5 +1,5 @@
 class DailyStack < ApplicationRecord
-  belongs_to :expense_category
+  belongs_to :expense_category, optional: true
   belongs_to :user
 
   enum status: { todo: 0, done: 1 }

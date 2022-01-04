@@ -1,59 +1,120 @@
-<div class="px-10 py-5 bg-black">
-  <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 content-center pt-6">
-    <div class="flex col-start-2 col-span-4 py-1">
-      <button class="modal-open flex-grow py-6 rounded-lg text-4xl font-medium text-white bg-blue-400" type="button" name="button">積み上げ入力</button>
-    </div>
-    <div class="flex col-start-2 col-span-4 py-1">
-      <button class="flex-grow py-6 rounded-lg text-4xl font-medium text-white bg-red-400" type="button" name="button">支出入力</button>
-    </div>
-    <div class="flex justify-end col-start-2 col-span-4 py-1">
-      <button class="rounded-lg text-md font-medium text-white" type="button" name="button">キャンセル</button>
+<div class="text-center">
+  <span class="inline-block align-middle h-screen">&#8203;</span>
+  <div class="inline-block w-4/5 align-middle px-10 py-5">
+    <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 pt-6">
+      <div class="flex col-start-2 col-span-4 py-4">
+        <button class="stack-modal-open flex-grow py-12 rounded-lg text-5xl font-medium text-white bg-blue-400" type="button" name="button">積み上げ入力</button>
+      </div>
+      <div class="flex col-start-2 col-span-4 py-4">
+        <button class="expense-modal-open flex-grow py-12 rounded-lg text-5xl font-medium text-white bg-red-400" type="button" name="button">支出入力</button>
+      </div>
+      <div class="flex justify-end col-start-2 col-span-4 py-2">
+        <button class="rounded-lg text-md font-medium text-white" type="button" name="button">キャンセル</button>
+      </div>
     </div>
   </div>
 </div>
-<div class="modal-content hidden fixed z-10 inset-0 overflow-y-auto text-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-  <div class="modal-close fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+<div class="stack-modal-content hidden fixed z-10 inset-0 text-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="stack-modal-close fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
   <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-  <div class="inline-block align-middle bg-black rounded-lg overflow-hidden shadow-xl transform text-left p-8">
+  <div class="inline-block w-4/5 align-middle bg-black rounded-lg overflow-hidden shadow-xl transform text-left p-8">
     <%= form_with model: @daily_stack, local: true do |f| %>
     <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 content-center py-4">
-      <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-1">
+      <div class="col-start-2 col-span-4 grid grid-cols-5 py-5">
         <p class="text-white col-span-2 text-3xl">勉強時間：</p>
-        <%= f.text_field :amount, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
+        <%= f.number_field :amount, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
         <%= f.hidden_field :title, value: "勉強時間" %>
         <%= f.hidden_field :date, value: @date %>
         <%= f.hidden_field :unit, value: :study %>
-        <%= f.hidden_field :expense_category_id, value: 1 %>
-        <%# expense_category_id=1は非支出 %>
       </div>
       <div class="flex justify-end col-start-2 col-span-4 py-1">
-        <button class="px-2 rounded-lg text-md font-medium text-white modal-close" type="button" name="button">キャンセル</button>
-        <%= f.submit "登録", class: "px-2 rounded-lg text-lg font-medium text-red-500 bg-black" %>
+        <button class="px-2 rounded-lg text-xl font-medium text-white stack-modal-close" type="button" name="button" onclick="window.location.reload();">キャンセル</button>
+        <%= f.submit "登録", class: "px-2 rounded-lg text-2xl font-medium text-red-500 bg-black" %>
       </div>
     </div>
     <% end %>
     <br>
     <%= form_with model: @daily_stack, local: true do |f| %>
       <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 content-center py-4">
-        <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-1 mb-3">
+        <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-5">
           <p class="text-white col-span-2 text-3xl">勉強以外</p>
         </div>
-        <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-1">
-          <p class="text-white col-span-2 text-3xl">Title:</p>
+        <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-3">
+          <p class="text-white col-span-2 text-3xl">内容：</p>
           <%= f.text_field :title, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
           <%= f.hidden_field :date, value: @date %>
           <%= f.hidden_field :unit, value: :others %>
-          <%= f.hidden_field :expense_category_id, value: 1 %>
         </div>
-        <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-1">
-          <p class="text-white col-span-2 text-3xl">Amount:</p>
-          <%= f.text_field :amount, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
+        <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-3">
+          <p class="text-white col-span-2 text-3xl">量：</p>
+          <%= f.number_field :amount, class:"col-start-3 col-span-3 border border-green-400 bg-black text-xl text-white pl-2" %>
         </div>
-        <div class="flex justify-end col-start-2 col-span-4 py-1">
-          <button class="px-2 rounded-lg text-md font-medium text-white modal-close" type="button" name="button">キャンセル</button>
-          <%= f.submit "登録", class:"px-2 rounded-lg text-lg font-medium text-red-500 bg-black" %>
+        <div class="flex justify-end col-start-2 col-span-4 py-5">
+          <button class="px-2 rounded-lg text-xl font-medium text-white stack-modal-close" type="button" name="button" onclick="window.location.reload();">キャンセル</button>
+          <%= f.submit "登録", class:"px-2 rounded-lg text-2xl font-medium text-red-500 bg-black" %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+<div class="expense-modal-content hidden fixed z-10 inset-0 overflow-y-auto text-center" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+  <div class="expense-modal-close fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+  <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+  <div class="inline-block w-4/5 align-middle bg-black rounded-lg overflow-hidden shadow-xl transform text-left p-8">
+    <%= form_with model: @daily_stack, local: true do |f| %>
+    <div class="grid grid-cols-6 rounded-lg border-4 border-green-400 content-center py-4">
+      <div class="col-start-2 col-span-4 py-5">
+        <p class="text-white text-3xl my-5">カテゴリ</p>
+          <%= render @expense_categories %>
+          <%= render "expense_categories/added_expense_category" %>
+          <button type="button" class="plus-button text-white bg-black cursor-pointer text-4xl font-medium">+</button> 
+      	  <%= render 'expense_categories/category_addition_area'%>
+          <%= f.hidden_field :expense_category_id, value: nil, class: "category-id" %>
+      </div>
+      <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-5">
+        <p class="text-white col-span-2 text-3xl">内容：</p>
+        <%= f.text_field :title, class:"col-start-3 col-span-3 border border-green-400 bg-black text-3xl text-white py-2 pl-2" %>
+        <%= f.hidden_field :date, value: @date %>
+        <%= f.hidden_field :unit, value: :expense %>
+      </div>
+      <div class="flex col-start-2 col-span-4 grid grid-cols-5 py-5">
+        <p class="text-white col-span-2 text-3xl">金額：</p>
+        <%= f.text_field :amount, readonly: true, class: "display col-start-3 col-span-3 w-full border border-green-400 bg-black text-right text-3xl text-white py-2 pr-2" %>
+      </div>
+      <div class="flex col-start-2 col-span-4 grid grid-cols-5 text-center py-3">
+        <div class="box col-start-1 col-span-5 border border-green-400 flex flex-wrap">
+          <div class="switch" id="1">1</div>
+          <div class="switch" id="2">2</div>
+          <div class="switch" id="3">3</div>
+          <div class="switch" id="4">4</div>
+          <div class="switch" id="5">5</div>
+          <div class="switch" id="6">6</div>
+          <div class="switch" id="7">7</div>
+          <div class="switch" id="8">8</div>
+          <div class="switch" id="9">9</div>
+          <div class="switch" id="0">0</div>
+          <div class="clear">C</div>
+          <div class="reset">AC</div>
+        </div>
+      </div>
+      <div class="flex justify-end col-start-2 col-span-4 py-3">
+        <button class="px-2 rounded-lg text-xl font-medium text-white expense-modal-close" type="button" name="button" onclick="window.location.reload();">キャンセル</button>
+        <%= f.submit "登録", class: "px-5 rounded-lg text-2xl font-medium text-red-500 bg-black cursor-pointer" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
+<style>
+.switch, .clear, .reset {
+  color: white;
+  font-size: 2rem;
+  border: 1px solid rgba(52, 211, 153);
+  width: 33.333333%;
+  height: 150px;
+  line-height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+</style>
