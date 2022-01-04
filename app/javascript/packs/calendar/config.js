@@ -21,7 +21,20 @@ const calendar = new Calendar(calendarEl, {
 calendar.render();
 
 function focusOnDate(date) {
-  $(".target-date").removeClass(".target-date");
+  $(".target-date").removeClass("target-date");
   date.dayEl.classList.add("target-date");
   console.log("日付クリック");
+
+  const dateVal = date.dateStr
+  $.ajax({
+    url: `/calendar/${dateVal}`,
+    type: 'GET',
+    dataType: 'html',
+    async: true,
+    data: {
+      targetDate: dateVal
+    },
+  }).done(function (res) {
+    console.log(res);
+  });
 };
