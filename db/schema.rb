@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_12_31_035419) do
 
   # These are extensions that must be enabled in order to support this database
@@ -52,7 +51,7 @@ ActiveRecord::Schema.define(version: 2021_12_31_035419) do
 
   create_table "schedules", force: :cascade do |t|
     t.string "title", null: false
-    t.datetime "date", null: false
+    t.datetime "date", precision: 6, null: false
     t.time "time", null: false
     t.integer "label_color"
     t.datetime "created_at", precision: 6, null: false
@@ -63,11 +62,11 @@ ActiveRecord::Schema.define(version: 2021_12_31_035419) do
 
   create_table "topics", force: :cascade do |t|
     t.text "content", null: false
-    t.string "month"
-    t.bigint "users_id", null: false
+    t.date "month"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["users_id"], name: "index_topics_on_users_id"
+    t.index ["user_id"], name: "index_topics_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,6 +83,6 @@ ActiveRecord::Schema.define(version: 2021_12_31_035419) do
   add_foreign_key "daily_stacks", "users"
   add_foreign_key "expense_categories", "users"
   add_foreign_key "monthly_targets", "users"
-  add_foreign_key "topics", "users", column: "users_id"
   add_foreign_key "schedules", "users"
+  add_foreign_key "topics", "users"
 end

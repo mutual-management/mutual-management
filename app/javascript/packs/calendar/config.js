@@ -23,6 +23,8 @@ calendar.render();
 function focusOnDate(date) {
   $(".target-date").removeClass("target-date");
   date.dayEl.classList.add("target-date");
+  // TODO 自身のユーザの時だけ
+  $(".daily-stacks-button").removeClass("hidden");
   console.log("日付クリック");
 
   const dateVal = date.dateStr
