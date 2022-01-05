@@ -1,0 +1,18 @@
+.fc-day-sat {
+  color: blue;
+}
+
+.fc-day-sun {
+  color: red;
+}
+
+.fc-toolbar .fc-button {
+  font-size: 14px;
+  border-color: #6c6c6c;
+  background-color: transparent;
+  color: #6c6c6c;
+}
+
+.target-date {
+  border: #489b4b 2px solid !important;
+}

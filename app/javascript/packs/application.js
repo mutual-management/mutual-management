@@ -3,6 +3,7 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../css/tailwindcss.css";
+import "../stylesheets/calendar.css"
 
 Rails.start()
 Turbolinks.start()
