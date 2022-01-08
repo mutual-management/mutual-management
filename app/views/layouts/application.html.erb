@@ -9,7 +9,8 @@
     <%= javascript_pack_tag "application" %>
   </head>
 
-  <body class="bg-black">
+  <body class="bg-black flex flex-col min-h-screen">
     <%= yield %>
+    <%= render 'shared/footer' %>
   </body>
 </html>
