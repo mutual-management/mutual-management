@@ -1,18 +1,28 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 
 const calendarEl = document.getElementById("calendar");
 
 const calendar = new Calendar(calendarEl, {
-  plugins: [dayGridPlugin, interactionPlugin],
+  plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
   timeZone: "Asia/Tokyo",
   firstDay: 1,
+  businessHours: true,
+  editable: true,
   headerToolbar: {
     start: 'prev',
     center: 'title',
-    end: 'today next'
+    end: 'today dayGridMonth timeGridWeek listMonth next'
   },
+  events: [
+    {
+      title: 'テスト予定',
+      start: '2022-01-03'
+    },
+  ],
   dateClick: function(targetDate) {
     focusOnDate(targetDate);
   }
