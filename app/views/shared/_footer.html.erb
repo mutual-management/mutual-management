@@ -5,17 +5,45 @@
 <%
 =end%>
   <div class="flex items-center m-2 grid grid-cols-4 gap-4">
-    <%= link_to root_path, class: "text-center rounded-lg m-2 p-2 border-2 border-green-400 bg-black" do %>
-      <i class="fas fa-chevron-left fa-lg mt-2"></i>
-    <% end %>
-    <%= link_to "#", class: "text-center rounded-lg m-2 p-2 border-2 border-green-400 bg-black" do %>
-      <i class="fas fa-chevron-left fa-lg mt-2"></i>
-    <% end %>
-    <%= link_to "#", class: "text-center rounded-lg m-2 p-2 border-2 border-green-400 bg-black" do %>
-      <i class="fas fa-chevron-left fa-lg mt-2"></i>
-    <% end %>
-    <%= link_to "#", class: "text-center rounded-lg m-2 p-2 border-2 border-green-400 bg-black" do %>
-      <i class="fas fa-chevron-left fa-lg mt-2"></i>
-    <% end %>
+    <div class="m-2 p-2">
+      <div class="text-center rounded-lg border-2 border-green-400 bg-black">
+        <%= link_to root_path do %>
+          🗓
+        <% end %>
+      </div>
+      <div class="text-center">
+        calendar
+      </div>
+    </div>
+    <div class="m-2 p-2">
+      <div class="text-center rounded-lg border-2 border-green-400 bg-black">
+        <%= link_to root_path do %>
+          📊
+        <% end %>
+      </div>
+      <div class="text-center">
+        graph
+      </div>
+    </div>
+    <div class="m-2 p-2">
+      <div class="text-center rounded-lg border-2 border-green-400 bg-black">
+        <%= link_to root_path do %>
+          📝
+        <% end %>
+      </div>
+      <div class="text-center">
+        topics
+      </div>
+    </div>
+    <div class="m-2 p-2">
+      <div class="text-center rounded-lg border-2 border-green-400 bg-black">
+        <%= link_to root_path do %>
+          ✅
+        <% end %>
+      </div>
+      <div class="text-center">
+        check
+      </div>
+    </div>
   </div>
 </footer>
