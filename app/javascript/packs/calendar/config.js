@@ -9,8 +9,8 @@ const calendarEl = document.getElementById("calendar");
 const calendar = new Calendar(calendarEl, {
   plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
   timeZone: "Asia/Tokyo",
-  firstDay: 1,
-  businessHours: true,
+  firstDay: 0,
+  businessHours: false,
   editable: true,
   headerToolbar: {
     start: 'prev',
@@ -20,6 +20,10 @@ const calendar = new Calendar(calendarEl, {
   events: [
     {
       title: 'テスト予定',
+      start: '2022-01-03'
+    },
+    {
+      title: 'テスト予定A',
       start: '2022-01-03'
     },
   ],
