@@ -17,22 +17,25 @@ const calendar = new Calendar(calendarEl, {
     center: 'title',
     end: 'today dayGridMonth timeGridWeek listMonth next'
   },
-  events: [
-    {
-      title: 'テスト予定',
-      start: '2022-01-03'
-    },
-    {
-      title: 'テスト予定A',
-      start: '2022-01-03'
-    },
-  ],
+  events: '/schedules.json',
+  // events: [
+  //   {
+  //     title: 'テスト予定',
+  //     start: '2022-01-03'
+  //   },
+  // ],
   dateClick: function(targetDate) {
     focusOnDate(targetDate);
   }
 });
 
 calendar.render();
+
+$(".clender-reload").on('click',function(){
+  setTimeout(function(){
+    calendar.refetchEvents();
+  },500);
+});
 
 function focusOnDate(date) {
   $(".target-date").removeClass("target-date");
