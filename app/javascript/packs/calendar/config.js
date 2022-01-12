@@ -17,13 +17,7 @@ const calendar = new Calendar(calendarEl, {
     center: 'title',
     end: 'today dayGridMonth timeGridWeek listMonth next'
   },
-  events: '/schedules.json',
-  // events: [
-  //   {
-  //     title: 'テスト予定',
-  //     start: '2022-01-03'
-  //   },
-  // ],
+  events: '/calendar.json',
   dateClick: function(targetDate) {
     focusOnDate(targetDate);
   }
@@ -31,10 +25,18 @@ const calendar = new Calendar(calendarEl, {
 
 calendar.render();
 
-$(".clender-reload").on('click',function(){
+$(".clender-reload").on('click', function(){
   setTimeout(function(){
     calendar.refetchEvents();
   },500);
+});
+
+$('.fc-prev-button span').click(function() {
+  alert('prev is clicked, do something');
+});
+
+$('.fc-next-button span').click(function() {
+  alert('nextis clicked, do something');
 });
 
 function focusOnDate(date) {
