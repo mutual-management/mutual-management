@@ -1,5 +1,6 @@
 class CalendarController < ApplicationController
   def index
+    @schedule = Schedule.new
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
     @schedules = Schedule.where(date: @month.all_month)
     respond_to do |format|
