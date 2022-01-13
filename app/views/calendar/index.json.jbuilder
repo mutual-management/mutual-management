@@ -1,8 +1,8 @@
-json.array!(@events) do |event|
+json.array!(@schedules) do |schedule|
   puts "feijwfoijwieoj"
-  json.id event.id
-  json.start event.date + event.time
-  json.end event.date + event.time
-  json.title event.title
-  # json.color Schedule.labelColors.key(event.label_color)
+  json.id schedule.id
+  json.start schedule.date + schedule.time
+  json.end schedule.date + schedule.time
+  json.title schedule.title
+  json.color Schedule.labelColors.key(event.label_color)
 end

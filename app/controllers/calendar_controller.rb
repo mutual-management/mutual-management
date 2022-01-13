@@ -1,7 +1,11 @@
 class CalendarController < ApplicationController
   def index
     @month = params[:month] ? Date.parse(params[:month]) : Time.zone.today
-    @events = Schedule.where(date: @month.all_month)
+    @schedules = Schedule.where(date: @month.all_month)
+    respond_to do |format|
+      format.html { render 'index' }
+      format.json { render json: @schedules }
+    end
   end
 
   def show

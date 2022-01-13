@@ -46,7 +46,8 @@ function focusOnDate(date) {
   $(".daily-stacks-button").removeClass("hidden");
   console.log("日付クリック");
 
-  const dateVal = date.dateStr
+  const dateVal = date.dateStr;
+
   $.ajax({
     url: `/calendar/${dateVal}`,
     type: 'GET',
