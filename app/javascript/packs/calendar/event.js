@@ -20,7 +20,7 @@ const calendar = new Calendar(calendarEl, {
   events: '/calendar.json',
   dateClick: function(targetDate) {
     focusOnDate(targetDate);
-  }
+  },
 });
 
 calendar.render();
@@ -31,12 +31,16 @@ $(".clender-reload").on('click', function(){
   },500);
 });
 
-$('.fc-prev-button span').click(function() {
-  alert('prev is clicked, do something');
+// 前月表示
+$('.fc-prev-button').click(function() {
+  var prevDate = getFormattedDate(calendar.getDate());
+  refreshCalendar(prevDate);
 });
 
-$('.fc-next-button span').click(function() {
-  alert('nextis clicked, do something');
+// 次月表示
+$('.fc-next-button').click(function() {
+  var nextDate = getFormattedDate(calendar.getDate());
+  refreshCalendar(nextDate);
 });
 
 function focusOnDate(date) {
@@ -60,3 +64,22 @@ function focusOnDate(date) {
     console.log(res);
   });
 };
+
+function refreshCalendar(targetDate) {
+  $.ajax({
+    url: `/calendar`,
+    type: 'GET',
+    dataType: 'html',
+    async: true,
+    data: {
+      target_date: targetDate
+    },
+  }).done(function (res) {
+    console.log(res);
+  });
+}
+
+function getFormattedDate(date) {
+  // yyyymmddの文字列を返す
+  return prevDate.getFullYear().toString() + prevDate.getMonth().toString() + prevDate.getDate().toString();
+}
