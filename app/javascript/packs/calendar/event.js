@@ -43,6 +43,7 @@ $('.fc-next-button').click(function() {
   refreshCalendar(nextDate);
 });
 
+// 押下した日付の項目と支出の表示
 function focusOnDate(date) {
   $(".target-date").removeClass("target-date");
   date.dayEl.classList.add("target-date");
@@ -65,21 +66,26 @@ function focusOnDate(date) {
   });
 };
 
+// その月のカレンダーと予定を再表示
 function refreshCalendar(targetDate) {
   $.ajax({
     url: `/calendar`,
     type: 'GET',
-    dataType: 'html',
-    async: true,
-    data: {
-      target_date: targetDate
-    },
+    dataType: 'json',
+    data: { target_date: targetDate },
   }).done(function (res) {
-    console.log(res);
+    calendar.removeAllEvents();
+    res.forEach(x => calendar.addEvent(x));
+  }).catch(function (error) {
+    console.log(error);
   });
 }
 
+// yyyymmddの文字列を返す
 function getFormattedDate(date) {
-  // yyyymmddの文字列を返す
-  return prevDate.getFullYear().toString() + prevDate.getMonth().toString() + prevDate.getDate().toString();
+  var dateFormat = "YYYY/MM/DD";
+  dateFormat = dateFormat.replace(/YYYY/, date.getFullYear());
+  dateFormat = dateFormat.replace(/MM/, date.getMonth() + 1);
+  dateFormat = dateFormat.replace(/DD/, date.getDate());
+  return dateFormat.toString();
 }
