@@ -4,6 +4,7 @@ import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "../css/tailwindcss.css";
 import "../stylesheets/calendar.css"
+import "../stylesheets/flash_message.css"
 
 Rails.start()
 Turbolinks.start()

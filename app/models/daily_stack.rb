@@ -6,6 +6,7 @@ class DailyStack < ApplicationRecord
   enum unit: { study: 0, expense: 1, others: 2 }
 
   validates :title, presence: true, length: { maximum: 50 }
+  validates :amount, presence: true
   validates :status, presence: true
   validates :date, presence: true
   validates :unit, presence: true

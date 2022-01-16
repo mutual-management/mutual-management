@@ -7,8 +7,11 @@ class ExpenseCategoriesController < ApplicationController
 
   def create
     @expense_category = current_user.expense_categories.create(expense_category_params)
-    @expense_category.save! # エラーハンドリング未実装
-    render json: @expense_category
+    if @expense_category.save
+      render json: @expense_category
+    else
+      raise
+    end
   end
 
   def update

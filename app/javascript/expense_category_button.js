@@ -54,6 +54,7 @@ $(function(){
       .attr('value', res.title)
       .text(res.title)
       .show();
+    $(".plus-button").show();
     });
   });
 });                                                                                   
