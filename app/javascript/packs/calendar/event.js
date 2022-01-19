@@ -47,9 +47,7 @@ $('.fc-next-button').click(function() {
 function focusOnDate(date) {
   $(".target-date").removeClass("target-date");
   date.dayEl.classList.add("target-date");
-  // TODO 自身のユーザの時だけ
   $(".daily-stacks-button").removeClass("hidden");
-  console.log("日付クリック");
 
   const dateVal = date.dateStr;
 
@@ -62,7 +60,10 @@ function focusOnDate(date) {
       targetDate: dateVal
     },
   }).done(function (res) {
-    console.log(res);
+    debugger;
+    console.log(JSON.parse(res));
+    $('.daily-stacks').html("<%= render \"calendar/daily_stack\", collection: @daily_stacks, as \"daily_stack\" %>");
+    $('.daily-schedules').html("<%= render \"calendar/daily_schedule\", collection: @daily_schedules, as \"daily_schedule\" %>");
   });
 };
 
