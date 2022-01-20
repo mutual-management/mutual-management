@@ -45,25 +45,23 @@ $('.fc-next-button').click(function() {
 
 // 押下した日付の項目と支出の表示
 function focusOnDate(date) {
+  // フォーカス用の枠線を引く
   $(".target-date").removeClass("target-date");
   date.dayEl.classList.add("target-date");
   $(".daily-stacks-button").removeClass("hidden");
 
+  // 結果と予定を取得し画面下部に表示
   const dateVal = date.dateStr;
-
   $.ajax({
     url: `/calendar/${dateVal}`,
     type: 'GET',
     dataType: 'html',
     async: true,
     data: {
-      targetDate: dateVal
+      target_date: dateVal
     },
   }).done(function (res) {
-    debugger;
-    console.log(JSON.parse(res));
-    $('.daily-stacks').html("<%= render \"calendar/daily_stack\", collection: @daily_stacks, as \"daily_stack\" %>");
-    $('.daily-schedules').html("<%= render \"calendar/daily_schedule\", collection: @daily_schedules, as \"daily_schedule\" %>");
+    $(".daily-schedules").html(res);
   });
 };
 

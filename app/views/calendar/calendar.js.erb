@@ -1,0 +1,4 @@
+<div>本日の予定</div>
+<%= render partial: 'calendar/daily_schedule', collection: @daily_schedules, as: 'schedule' %>
+<div>本日の結果</div>
+<%= render partial: 'calendar/daily_stack', collection: @daily_stacks, as: 'stack' %>
