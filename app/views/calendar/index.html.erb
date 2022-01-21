@@ -7,15 +7,10 @@
   <div class="text-center">
     <div id="calendar" class="text-white"></div>
   </div>
-  <div class="text-center text-white">
-    <div>
-      TODO 押下したカレンダーのユーザごとの日々の入力実績をここに表示したい
-      TODO 全体的なデザイン
-      TODO 日付押下時のAjax通信
-      TODO カレンダーに予定があったら表示
-      TODO 予定入力の初期表示の時間がおかしい(日本時間になってない)
-    </div>
+  <div class="text-center m-5 text-white">
+    <div class="daily-schedules"></div>
+    <div class="daily-stacks"></div>
   </div>
 </div>
-<%= javascript_pack_tag "calendar/config" %>
+<%= javascript_pack_tag 'calendar/event' %>
 <%= render partial: "schedules/new" %>
