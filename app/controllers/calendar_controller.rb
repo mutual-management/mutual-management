@@ -15,6 +15,6 @@ class CalendarController < ApplicationController
     @targetDate = params[:target_date] ? Date.parse(params[:target_date]) : Time.zone.today
     @daily_schedules = Schedule.where(date: @targetDate.all_day)
     @daily_stacks = DailyStack.where(date: @targetDate.all_day)
-    render 'calendar.js.erb'
+    render 'daily_result.js.erb'
   end
 end

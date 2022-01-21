@@ -1,0 +1,11 @@
+<div class="container m-3">
+  <div class="text-left">🔴本日の予定</div>
+  <ul class="text-left list-disc list-inside">
+    <%= render partial: 'calendar/daily_schedule', collection: @daily_schedules, as: 'schedule' %>
+  </ul>
+  <div class="mt-3"></div>
+  <div class="text-left">🟢本日の結果</div>
+  <ul class="text-left list-disc list-inside">
+    <%= render partial: 'calendar/daily_stack', collection: @daily_stacks, as: 'stack' %>
+  </ul>
+</div>
