@@ -17,12 +17,21 @@ class DailyStacksController < ApplicationController
 
   def create
     @daily_stack = current_user.daily_stacks.build(daily_stack_params)
-    @daily_stack.save! # TODO エラーハンドリング未実装
-    redirect_to new_daily_stack_path
+    if @daily_stack.save
+      flash[:success] = '登録が完了しました。'
+      redirect_to new_daily_stack_path
+    else
+      flash[:danger] = '入力値が正しくありません。もう一度入力してください。'
+      redirect_to new_daily_stack_path
+    end
   end
 
   def update
-    @daily_stack.update(daily_stack_params)
+    if @daily_stack.update(daily_stack_params)
+      # サクセスメッセージ
+    else
+      # エラーメッセージ
+    end
   end
 
   def destroy
